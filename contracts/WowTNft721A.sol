@@ -2,19 +2,17 @@
 pragma solidity ^0.8.17;
 
 import { NFT721A } from "./NFT721A.sol";
-// import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import { VRFCoordinatorV2Interface } from "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import { VRFConsumerBaseV2Upgradeable } from "@chainlink/contracts/src/v0.8/dev/VRFConsumerBaseV2Upgradeable.sol";
 
 // contract name will be changed later
 contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
 
-    VRFCoordinatorV2Interface public coordinator;  // coordinator
+    VRFCoordinatorV2Interface public coordinator;
 
     error NoTokenIdAvailable();
 
-    // uint256 private price;  // remove global var
-    address[] public buyAddresses;  // buyAddresses
+    address[] public buyAddresses;
     bool public whitelisted;
     bool public allowlisted;
     bool public publiclisted;
@@ -22,8 +20,8 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
 
     // Variable used for chainlink
 
-    bytes32 public sKeyHash; // sKeyHash
-    uint64 private sSubscriptionId; // sSubscriptionId
+    bytes32 public sKeyHash; 
+    uint64 private sSubscriptionId; 
     uint32 public callbackGasLimit;
     uint16 public requestConfirmations;
     uint32 public numWords;
@@ -84,10 +82,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     // event capture here
 
     // 1 - mint
-
-    /**
-     * @dev Throws if called by any account other than admins.
-    */
 
     function initialize(
         string memory name,
