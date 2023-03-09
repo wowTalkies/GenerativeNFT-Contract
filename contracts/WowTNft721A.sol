@@ -115,17 +115,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         _grantRole(MINTER_ROLE, _msgSender());
     }
 
-    function fulfillRandomWords(
-        uint256 requestId,
-        uint256[] memory randomWords
-        ) internal override {
-        require(
-            requestIdToRequestStatus[requestId].exists,
-            "request not found"
-        );
-        requestIdToRequestStatus[requestId].fulfilled = true;
-        requestIdToRequestStatus[requestId].randomWords = randomWords;        
-    }
+    // since the total collection size is 5000 plus so running this with batches
 
     function requestRandomness(uint256 from, uint256 to) public adminOnly returns (uint256 requestId) {
 
@@ -144,6 +134,29 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
 
          return requestId;
     }
+
+    function fulfillRandomWords(
+        uint256 requestId,
+        uint256[] memory randomWords
+        ) internal override {
+        require(
+            requestIdToRequestStatus[requestId].exists,
+            "request not found"
+        );
+        requestIdToRequestStatus[requestId].fulfilled = true;
+        requestIdToRequestStatus[requestId].randomWords = randomWords;        
+    }
+
+    function generateTokenIds(uint256 from, uint256 to) public adminOnly {
+        
+        for (uint256 i = from; i < to; i++) {
+           uint256 tokenid = getRandomTokenId(from, to, requestIds[i]); 
+            tokenIdToAddress[tokenid].exists = true;
+            tokenIdToAddress[tokenid].buyer = buyAddresses[i];
+        }
+    }
+
+    // collection size is large hence breaking the total into batch
 
     function getRandomTokenId(uint256 from, uint256 to, uint256 requestId)
         private
@@ -189,15 +202,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     function getRandomnessRequestState(uint256 requestId) public view returns (RequestStatus memory)
     {
         return requestIdToRequestStatus[requestId];
-    }
-
-    function generateTokenIds(uint256 from, uint256 to) public adminOnly {
-        
-        for (uint256 i = from; i < to; i++) {
-           uint256 tokenid = getRandomTokenId(from, to, requestIds[i]); 
-            tokenIdToAddress[tokenid].exists = true;
-            tokenIdToAddress[tokenid].buyer = buyAddresses[i];
-        }
     }
 
     /********** Buy token and mint functions     *******/
@@ -252,25 +256,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         totalTokenSold += quantity;
         payable(feeAddress).transfer(txAmount);
     }
-
-    /* function mint() public adminOnly returns (uint256 requestId) {
-        requestId = coordinator.requestRandomWords(
-            sKeyHash,
-            sSubscriptionId,
-            requestConfirmations,
-            callbackGasLimit,
-            numWords
-        );
-        uint256 mintLength = buyAddresses.length;
-        require(mintLength > 0, "No address need to mint");
-        for (uint i = 0; i < mintLength; i++) {
-            uint256 randomIndex = requestId % (buyAddresses.length);
-            address resultNumber = buyAddresses[randomIndex];
-            buyAddresses[randomIndex] = buyAddresses[buyAddresses.length - 1];
-            buyAddresses.pop();
-            _safeMint(resultNumber, 1);
-        }
-    } */
 
     function mint(uint256 from, uint256 to) public adminOnly {
         for (uint256 i = from; i < to; i++) {
