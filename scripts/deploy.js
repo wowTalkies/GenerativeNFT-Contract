@@ -7,15 +7,15 @@ async function main() {
   //   'GenerativeNFTs',
   //   'wowT',
   //   'https://wowt.mypinata.cloud/ipfs/Qmf7QC6z39qRatQF5YnjWgGtGRndCFCZeHrYtbf52TG46t', // contractUri
-  //   100,
+  //   5000,
   //   '0x26BA546b581f859BFeE6821958097E8bA1C24444',
   //   10484,
-  //   '0x2ca8e0c643bde4c2e08ab1fa0da3401adad7734d',
+  //   '0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D',
   //   '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15',
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0xC82C2b9C65B74D5B5af5CAEC735935DDB4a15c3d',
+    '0x7643c879adFC9FdAFfdcF6f7F7a4fC8eC4CFb55A',
     factory
   );
 

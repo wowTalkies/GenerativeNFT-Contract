@@ -2,7 +2,7 @@ const { run } = require('hardhat');
 async function main() {
   await run(`verify:verify`, {
     contract: 'contracts/WowTNft721A.sol:WowTNft721A',
-    address: '0xC82C2b9C65B74D5B5af5CAEC735935DDB4a15c3d',
+    address: '0x7643c879adFC9FdAFfdcF6f7F7a4fC8eC4CFb55A',
   });
 }
 

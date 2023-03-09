@@ -1,1267 +1,25 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x118992BBAc71b989114A3BfFD107466eeaD9D531",
-    "txHash": "0x4a947fed32c14882df8ad32eb1ebd08be2389300b02a0ee54fe8a58fde52f44d"
+    "address": "0xad0E3C6017ebBd08A9DD25935784b0b7984086c3",
+    "txHash": "0x3d6783ff670a6285e54304374395edcf7922da7be6606e120a399b08b098a5b4"
   },
   "proxies": [
     {
-      "address": "0x9004A8B8dAf56aBB7C3717efa5832F0f2350a426",
-      "txHash": "0x19bdb156097cdc2d03ad95b318f70bad3d665a684026f93d57da138c2ebc0383",
+      "address": "0x051baf9E0784a9878f7730B73d600822585f1631",
+      "txHash": "0x254970e70e3bad1d04e115d5b1a93797304cc4ccc2ae0df1d0209998eaf94d25",
       "kind": "transparent"
     },
     {
-      "address": "0xC82C2b9C65B74D5B5af5CAEC735935DDB4a15c3d",
-      "txHash": "0x82e2a52b41dca900cfddd0c19b75c38fde8a7f9bc40b1a4afa06ecd937bec57d",
+      "address": "0x7643c879adFC9FdAFfdcF6f7F7a4fC8eC4CFb55A",
+      "txHash": "0x9d996a1820346debbd4fe521a0559bb0a7dd287b184a07f6e8fe4b919eb60b14",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "7d398cb6f720602be3638940fc65d719fdf6e4c0c6f723319c4ddb98272044c1": {
-      "address": "0x3AFE185094dE09aCAeD245B1B89BDDbED68920aE",
-      "txHash": "0xa530c2d896a90e2883c559efa173ac889afa4c77ed0990604b077b057ba26b26",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)209_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "publicPrice",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_uint256",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:8"
-          },
-          {
-            "label": "maxPublicSupply",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_uint256",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:9"
-          },
-          {
-            "label": "contractUri",
-            "offset": 0,
-            "slot": "153",
-            "type": "t_string_storage",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:10"
-          },
-          {
-            "label": "baseTokenURI",
-            "offset": 0,
-            "slot": "154",
-            "type": "t_string_storage",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:11"
-          },
-          {
-            "label": "feeAddress",
-            "offset": 0,
-            "slot": "155",
-            "type": "t_address",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:12"
-          },
-          {
-            "label": "isMintable",
-            "offset": 20,
-            "slot": "155",
-            "type": "t_bool",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:13"
-          },
-          {
-            "label": "vrfCoordinator",
-            "offset": 0,
-            "slot": "156",
-            "type": "t_address",
-            "contract": "VRFConsumerBaseV2Upgradeable",
-            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:109"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "157",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "VRFConsumerBaseV2Upgradeable",
-            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:113"
-          },
-          {
-            "label": "COORDINATOR",
-            "offset": 0,
-            "slot": "206",
-            "type": "t_contract(VRFCoordinatorV2Interface)174",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:11"
-          },
-          {
-            "label": "price",
-            "offset": 0,
-            "slot": "207",
-            "type": "t_uint256",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:13"
-          },
-          {
-            "label": "addresses",
-            "offset": 0,
-            "slot": "208",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:14"
-          },
-          {
-            "label": "whitelisted",
-            "offset": 0,
-            "slot": "209",
-            "type": "t_bool",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:15"
-          },
-          {
-            "label": "allowlisted",
-            "offset": 1,
-            "slot": "209",
-            "type": "t_bool",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:16"
-          },
-          {
-            "label": "publicTokenSold",
-            "offset": 0,
-            "slot": "210",
-            "type": "t_uint256",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:17"
-          },
-          {
-            "label": "s_keyHash",
-            "offset": 0,
-            "slot": "211",
-            "type": "t_bytes32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:19"
-          },
-          {
-            "label": "s_subscriptionId",
-            "offset": 0,
-            "slot": "212",
-            "type": "t_uint64",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:20"
-          },
-          {
-            "label": "callbackGasLimit",
-            "offset": 8,
-            "slot": "212",
-            "type": "t_uint32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:21"
-          },
-          {
-            "label": "requestConfirmations",
-            "offset": 12,
-            "slot": "212",
-            "type": "t_uint16",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:22"
-          },
-          {
-            "label": "numWords",
-            "offset": 14,
-            "slot": "212",
-            "type": "t_uint32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:23"
-          },
-          {
-            "label": "whitelists",
-            "offset": 0,
-            "slot": "213",
-            "type": "t_struct(Whitelists)2218_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:41"
-          },
-          {
-            "label": "allowlists",
-            "offset": 0,
-            "slot": "218",
-            "type": "t_struct(AllowLists)2229_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:42"
-          },
-          {
-            "label": "whitelist",
-            "offset": 0,
-            "slot": "223",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:45"
-          },
-          {
-            "label": "maxWhitelistWalletMints",
-            "offset": 0,
-            "slot": "224",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:46"
-          },
-          {
-            "label": "allowlist",
-            "offset": 0,
-            "slot": "225",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:49"
-          },
-          {
-            "label": "maxAllowlistWalletMints",
-            "offset": 0,
-            "slot": "226",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:50"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(VRFCoordinatorV2Interface)174": {
-            "label": "contract VRFCoordinatorV2Interface",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_uint256)": {
-            "label": "mapping(address => uint256)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)209_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(AllowLists)2229_storage": {
-            "label": "struct RandomNft721A.AllowLists",
-            "members": [
-              {
-                "label": "allowlistPrice",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "allowlistLimit",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "allowlistAddressCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "maxAllowListSupply",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "allowlistTokenSold",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_struct(RoleData)209_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_struct(Whitelists)2218_storage": {
-            "label": "struct RandomNft721A.Whitelists",
-            "members": [
-              {
-                "label": "whitelistPrice",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "whitelistLimit",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "whitelistAddressCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "maxWhiteListSupply",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "whitelistTokenSold",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint32": {
-            "label": "uint32",
-            "numberOfBytes": "4"
-          },
-          "t_uint64": {
-            "label": "uint64",
-            "numberOfBytes": "8"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "0d7e45a5421c0ae2408bce23fd2184fbd962af1e3f4fe405d65622163b0e1a8c": {
-      "address": "0x567a2CA6D555ACacDC96b9CA8cD41B419f70E1b8",
-      "txHash": "0xf2536db7cea2eb9f241ed1936601251db95d8d934ccc95f9ada59e6cf6a44636",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)209_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "publicPrice",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_uint256",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:8"
-          },
-          {
-            "label": "maxPublicSupply",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_uint256",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:9"
-          },
-          {
-            "label": "contractUri",
-            "offset": 0,
-            "slot": "153",
-            "type": "t_string_storage",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:10"
-          },
-          {
-            "label": "baseTokenURI",
-            "offset": 0,
-            "slot": "154",
-            "type": "t_string_storage",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:11"
-          },
-          {
-            "label": "feeAddress",
-            "offset": 0,
-            "slot": "155",
-            "type": "t_address",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:12"
-          },
-          {
-            "label": "isMintable",
-            "offset": 20,
-            "slot": "155",
-            "type": "t_bool",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:13"
-          },
-          {
-            "label": "vrfCoordinator",
-            "offset": 0,
-            "slot": "156",
-            "type": "t_address",
-            "contract": "VRFConsumerBaseV2Upgradeable",
-            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:109"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "157",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "VRFConsumerBaseV2Upgradeable",
-            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:113"
-          },
-          {
-            "label": "COORDINATOR",
-            "offset": 0,
-            "slot": "206",
-            "type": "t_contract(VRFCoordinatorV2Interface)174",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:11"
-          },
-          {
-            "label": "price",
-            "offset": 0,
-            "slot": "207",
-            "type": "t_uint256",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:13"
-          },
-          {
-            "label": "addresses",
-            "offset": 0,
-            "slot": "208",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:14"
-          },
-          {
-            "label": "whitelisted",
-            "offset": 0,
-            "slot": "209",
-            "type": "t_bool",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:15"
-          },
-          {
-            "label": "allowlisted",
-            "offset": 1,
-            "slot": "209",
-            "type": "t_bool",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:16"
-          },
-          {
-            "label": "publicTokenSold",
-            "offset": 0,
-            "slot": "210",
-            "type": "t_uint256",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:17"
-          },
-          {
-            "label": "s_keyHash",
-            "offset": 0,
-            "slot": "211",
-            "type": "t_bytes32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:19"
-          },
-          {
-            "label": "s_subscriptionId",
-            "offset": 0,
-            "slot": "212",
-            "type": "t_uint64",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:20"
-          },
-          {
-            "label": "callbackGasLimit",
-            "offset": 8,
-            "slot": "212",
-            "type": "t_uint32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:21"
-          },
-          {
-            "label": "requestConfirmations",
-            "offset": 12,
-            "slot": "212",
-            "type": "t_uint16",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:22"
-          },
-          {
-            "label": "numWords",
-            "offset": 14,
-            "slot": "212",
-            "type": "t_uint32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:23"
-          },
-          {
-            "label": "whitelists",
-            "offset": 0,
-            "slot": "213",
-            "type": "t_struct(Whitelists)2218_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:41"
-          },
-          {
-            "label": "allowlists",
-            "offset": 0,
-            "slot": "218",
-            "type": "t_struct(AllowLists)2229_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:42"
-          },
-          {
-            "label": "whitelist",
-            "offset": 0,
-            "slot": "223",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:45"
-          },
-          {
-            "label": "maxWhitelistWalletMints",
-            "offset": 0,
-            "slot": "224",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:46"
-          },
-          {
-            "label": "allowlist",
-            "offset": 0,
-            "slot": "225",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:49"
-          },
-          {
-            "label": "maxAllowlistWalletMints",
-            "offset": 0,
-            "slot": "226",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:50"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(VRFCoordinatorV2Interface)174": {
-            "label": "contract VRFCoordinatorV2Interface",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_uint256)": {
-            "label": "mapping(address => uint256)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)209_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(AllowLists)2229_storage": {
-            "label": "struct RandomNft721A.AllowLists",
-            "members": [
-              {
-                "label": "allowlistPrice",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "allowlistLimit",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "allowlistAddressCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "maxAllowListSupply",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "allowlistTokenSold",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_struct(RoleData)209_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_struct(Whitelists)2218_storage": {
-            "label": "struct RandomNft721A.Whitelists",
-            "members": [
-              {
-                "label": "whitelistPrice",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "whitelistLimit",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "whitelistAddressCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "maxWhiteListSupply",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "whitelistTokenSold",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint32": {
-            "label": "uint32",
-            "numberOfBytes": "4"
-          },
-          "t_uint64": {
-            "label": "uint64",
-            "numberOfBytes": "8"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "3270f1c1d3326ff693b4064c47834ca9b7d69c01f96f44351330a84198147bc7": {
-      "address": "0x3eC11D5B5e7e01Ba82eFFd017319faa1a1Bad460",
-      "txHash": "0xc828f74d80237e799d5bcb8ab368ce9cffab4723286267c5e979f6ddf04d41e0",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)209_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "publicPrice",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_uint256",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:8"
-          },
-          {
-            "label": "maxPublicSupply",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_uint256",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:9"
-          },
-          {
-            "label": "contractUri",
-            "offset": 0,
-            "slot": "153",
-            "type": "t_string_storage",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:10"
-          },
-          {
-            "label": "baseTokenURI",
-            "offset": 0,
-            "slot": "154",
-            "type": "t_string_storage",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:11"
-          },
-          {
-            "label": "feeAddress",
-            "offset": 0,
-            "slot": "155",
-            "type": "t_address",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:12"
-          },
-          {
-            "label": "isMintable",
-            "offset": 20,
-            "slot": "155",
-            "type": "t_bool",
-            "contract": "Token721A",
-            "src": "contracts\\Token721A.sol:13"
-          },
-          {
-            "label": "vrfCoordinator",
-            "offset": 0,
-            "slot": "156",
-            "type": "t_address",
-            "contract": "VRFConsumerBaseV2Upgradeable",
-            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:109"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "157",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "VRFConsumerBaseV2Upgradeable",
-            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:113"
-          },
-          {
-            "label": "COORDINATOR",
-            "offset": 0,
-            "slot": "206",
-            "type": "t_contract(VRFCoordinatorV2Interface)174",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:11"
-          },
-          {
-            "label": "price",
-            "offset": 0,
-            "slot": "207",
-            "type": "t_uint256",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:13"
-          },
-          {
-            "label": "addresses",
-            "offset": 0,
-            "slot": "208",
-            "type": "t_array(t_address)dyn_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:14"
-          },
-          {
-            "label": "whitelisted",
-            "offset": 0,
-            "slot": "209",
-            "type": "t_bool",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:15"
-          },
-          {
-            "label": "allowlisted",
-            "offset": 1,
-            "slot": "209",
-            "type": "t_bool",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:16"
-          },
-          {
-            "label": "publicTokenSold",
-            "offset": 0,
-            "slot": "210",
-            "type": "t_uint256",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:17"
-          },
-          {
-            "label": "s_keyHash",
-            "offset": 0,
-            "slot": "211",
-            "type": "t_bytes32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:19"
-          },
-          {
-            "label": "s_subscriptionId",
-            "offset": 0,
-            "slot": "212",
-            "type": "t_uint64",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:20"
-          },
-          {
-            "label": "callbackGasLimit",
-            "offset": 8,
-            "slot": "212",
-            "type": "t_uint32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:21"
-          },
-          {
-            "label": "requestConfirmations",
-            "offset": 12,
-            "slot": "212",
-            "type": "t_uint16",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:22"
-          },
-          {
-            "label": "numWords",
-            "offset": 14,
-            "slot": "212",
-            "type": "t_uint32",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:23"
-          },
-          {
-            "label": "whitelists",
-            "offset": 0,
-            "slot": "213",
-            "type": "t_struct(Whitelists)2218_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:41"
-          },
-          {
-            "label": "allowlists",
-            "offset": 0,
-            "slot": "218",
-            "type": "t_struct(AllowLists)2229_storage",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:42"
-          },
-          {
-            "label": "whitelist",
-            "offset": 0,
-            "slot": "223",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:45"
-          },
-          {
-            "label": "maxWhitelistWalletMints",
-            "offset": 0,
-            "slot": "224",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:46"
-          },
-          {
-            "label": "allowlist",
-            "offset": 0,
-            "slot": "225",
-            "type": "t_mapping(t_address,t_bool)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:49"
-          },
-          {
-            "label": "maxAllowlistWalletMints",
-            "offset": 0,
-            "slot": "226",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "RandomNft721A",
-            "src": "contracts\\RandomNft721A.sol:50"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(VRFCoordinatorV2Interface)174": {
-            "label": "contract VRFCoordinatorV2Interface",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_uint256)": {
-            "label": "mapping(address => uint256)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)209_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(AllowLists)2229_storage": {
-            "label": "struct RandomNft721A.AllowLists",
-            "members": [
-              {
-                "label": "allowlistPrice",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "allowlistLimit",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "allowlistAddressCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "maxAllowListSupply",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "allowlistTokenSold",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_struct(RoleData)209_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_struct(Whitelists)2218_storage": {
-            "label": "struct RandomNft721A.Whitelists",
-            "members": [
-              {
-                "label": "whitelistPrice",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "whitelistLimit",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "whitelistAddressCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "maxWhiteListSupply",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "whitelistTokenSold",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint32": {
-            "label": "uint32",
-            "numberOfBytes": "4"
-          },
-          "t_uint64": {
-            "label": "uint64",
-            "numberOfBytes": "8"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "89092759112f167b43640c23162d8feb42d5378da5c7036e5dbe5e89eef4d93a": {
-      "address": "0x931718E67B50206b9aa1F2aC30ac6c03d1882DF5",
-      "txHash": "0x9a572dce9397140782b4650097a02a8e5aefd49b058cc0b6847cf06b4092d414",
+    "92e587612ae346c4985a2335a2145ccb93bfc155403e0cb32a978b44d64d0142": {
+      "address": "0xe569A6300282Ff53Cf7f3867EDb0Aad16648a034",
+      "txHash": "0x2b769b88143ed79777dc8b6c2406a207efb9397463c2c5a640ab5e0bd16ccf89",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [
@@ -1379,140 +137,148 @@
             "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:113"
           },
           {
-            "label": "COORDINATOR",
+            "label": "coordinator",
             "offset": 0,
             "slot": "206",
             "type": "t_contract(VRFCoordinatorV2Interface)174",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:11"
-          },
-          {
-            "label": "price",
-            "offset": 0,
-            "slot": "207",
-            "type": "t_uint256",
-            "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:13"
+            "src": "contracts\\WowTNft721A.sol:12"
           },
           {
             "label": "buyAddresses",
             "offset": 0,
-            "slot": "208",
+            "slot": "207",
             "type": "t_array(t_address)dyn_storage",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:14"
+            "src": "contracts\\WowTNft721A.sol:15"
           },
           {
             "label": "whitelisted",
             "offset": 0,
-            "slot": "209",
+            "slot": "208",
             "type": "t_bool",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:15"
+            "src": "contracts\\WowTNft721A.sol:16"
           },
           {
             "label": "allowlisted",
             "offset": 1,
-            "slot": "209",
+            "slot": "208",
             "type": "t_bool",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:16"
+            "src": "contracts\\WowTNft721A.sol:17"
+          },
+          {
+            "label": "publiclisted",
+            "offset": 2,
+            "slot": "208",
+            "type": "t_bool",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:18"
           },
           {
             "label": "totalTokenSold",
             "offset": 0,
-            "slot": "210",
+            "slot": "209",
             "type": "t_uint256",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:17"
+            "src": "contracts\\WowTNft721A.sol:19"
           },
           {
-            "label": "s_keyHash",
+            "label": "sKeyHash",
             "offset": 0,
-            "slot": "211",
+            "slot": "210",
             "type": "t_bytes32",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:21"
+            "src": "contracts\\WowTNft721A.sol:23"
           },
           {
-            "label": "s_subscriptionId",
+            "label": "sSubscriptionId",
             "offset": 0,
-            "slot": "212",
+            "slot": "211",
             "type": "t_uint64",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:22"
+            "src": "contracts\\WowTNft721A.sol:24"
           },
           {
             "label": "callbackGasLimit",
             "offset": 8,
-            "slot": "212",
+            "slot": "211",
             "type": "t_uint32",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:23"
+            "src": "contracts\\WowTNft721A.sol:25"
           },
           {
             "label": "requestConfirmations",
             "offset": 12,
-            "slot": "212",
+            "slot": "211",
             "type": "t_uint16",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:24"
+            "src": "contracts\\WowTNft721A.sol:26"
           },
           {
             "label": "numWords",
             "offset": 14,
-            "slot": "212",
+            "slot": "211",
             "type": "t_uint32",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:25"
+            "src": "contracts\\WowTNft721A.sol:27"
           },
           {
             "label": "whitelists",
             "offset": 0,
-            "slot": "213",
+            "slot": "212",
             "type": "t_struct(Whitelists)2388_storage",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:47"
+            "src": "contracts\\WowTNft721A.sol:49"
           },
           {
             "label": "allowlists",
             "offset": 0,
-            "slot": "218",
+            "slot": "217",
             "type": "t_struct(AllowLists)2399_storage",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:48"
+            "src": "contracts\\WowTNft721A.sol:50"
           },
           {
             "label": "whitelist",
             "offset": 0,
-            "slot": "223",
+            "slot": "222",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:51"
+            "src": "contracts\\WowTNft721A.sol:53"
           },
           {
             "label": "maxWhitelistWalletMints",
             "offset": 0,
-            "slot": "224",
+            "slot": "223",
             "type": "t_mapping(t_address,t_uint256)",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:52"
+            "src": "contracts\\WowTNft721A.sol:54"
           },
           {
             "label": "allowlist",
             "offset": 0,
-            "slot": "225",
+            "slot": "224",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:55"
+            "src": "contracts\\WowTNft721A.sol:57"
           },
           {
             "label": "maxAllowlistWalletMints",
             "offset": 0,
-            "slot": "226",
+            "slot": "225",
             "type": "t_mapping(t_address,t_uint256)",
             "contract": "WowTNft721A",
-            "src": "contracts\\RandomNft721A.sol:56"
+            "src": "contracts\\WowTNft721A.sol:58"
+          },
+          {
+            "label": "randomWordsToRequestId",
+            "offset": 0,
+            "slot": "226",
+            "type": "t_mapping(t_uint256,t_array(t_uint256)dyn_storage)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:59"
           }
         ],
         "types": {
@@ -1531,6 +297,10 @@
           "t_array(t_uint256)50_storage": {
             "label": "uint256[50]",
             "numberOfBytes": "1600"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
           },
           "t_bool": {
             "label": "bool",
@@ -1554,6 +324,10 @@
           },
           "t_mapping(t_bytes32,t_struct(RoleData)209_storage)": {
             "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_array(t_uint256)dyn_storage)": {
+            "label": "mapping(uint256 => uint256[])",
             "numberOfBytes": "32"
           },
           "t_string_storage": {
@@ -1615,6 +389,522 @@
             "numberOfBytes": "64"
           },
           "t_struct(Whitelists)2388_storage": {
+            "label": "struct WowTNft721A.Whitelists",
+            "members": [
+              {
+                "label": "whitelistPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "whitelistLimit",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "whitelistAddressCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "maxWhiteListSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "whitelistTokenSold",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint64": {
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "fc12bfb7691e1992666bba70b44e4004ceff275509bc1a5f1eb655d4e4e91e58": {
+      "address": "0x9DC36FBf6295c2b4757a572E5B40AE5C9D8eB5fF",
+      "txHash": "0xf5bb952a809e8182d31736209401b752ee8de52786b3262669dfeba77ae3b591",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ERC165Upgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
+          },
+          {
+            "label": "_roles",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)209_storage)",
+            "contract": "AccessControlUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "AccessControlUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
+          },
+          {
+            "label": "tokenPrice",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_uint256",
+            "contract": "NFT721A",
+            "src": "contracts\\NFT721A.sol:8"
+          },
+          {
+            "label": "maxSupply",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_uint256",
+            "contract": "NFT721A",
+            "src": "contracts\\NFT721A.sol:9"
+          },
+          {
+            "label": "contractUri",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_string_storage",
+            "contract": "NFT721A",
+            "src": "contracts\\NFT721A.sol:10"
+          },
+          {
+            "label": "baseTokenURI",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_string_storage",
+            "contract": "NFT721A",
+            "src": "contracts\\NFT721A.sol:11"
+          },
+          {
+            "label": "feeAddress",
+            "offset": 0,
+            "slot": "155",
+            "type": "t_address",
+            "contract": "NFT721A",
+            "src": "contracts\\NFT721A.sol:12"
+          },
+          {
+            "label": "pausable",
+            "offset": 20,
+            "slot": "155",
+            "type": "t_bool",
+            "contract": "NFT721A",
+            "src": "contracts\\NFT721A.sol:13"
+          },
+          {
+            "label": "vrfCoordinator",
+            "offset": 0,
+            "slot": "156",
+            "type": "t_address",
+            "contract": "VRFConsumerBaseV2Upgradeable",
+            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:109"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "157",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "VRFConsumerBaseV2Upgradeable",
+            "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:113"
+          },
+          {
+            "label": "coordinator",
+            "offset": 0,
+            "slot": "206",
+            "type": "t_contract(VRFCoordinatorV2Interface)174",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:12"
+          },
+          {
+            "label": "buyAddresses",
+            "offset": 0,
+            "slot": "207",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:17"
+          },
+          {
+            "label": "whitelisted",
+            "offset": 0,
+            "slot": "208",
+            "type": "t_bool",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:18"
+          },
+          {
+            "label": "allowlisted",
+            "offset": 1,
+            "slot": "208",
+            "type": "t_bool",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:19"
+          },
+          {
+            "label": "publiclisted",
+            "offset": 2,
+            "slot": "208",
+            "type": "t_bool",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:20"
+          },
+          {
+            "label": "totalTokenSold",
+            "offset": 0,
+            "slot": "209",
+            "type": "t_uint256",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:21"
+          },
+          {
+            "label": "sKeyHash",
+            "offset": 0,
+            "slot": "210",
+            "type": "t_bytes32",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:25"
+          },
+          {
+            "label": "sSubscriptionId",
+            "offset": 0,
+            "slot": "211",
+            "type": "t_uint64",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:26"
+          },
+          {
+            "label": "callbackGasLimit",
+            "offset": 8,
+            "slot": "211",
+            "type": "t_uint32",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:27"
+          },
+          {
+            "label": "requestConfirmations",
+            "offset": 12,
+            "slot": "211",
+            "type": "t_uint16",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:28"
+          },
+          {
+            "label": "numWords",
+            "offset": 14,
+            "slot": "211",
+            "type": "t_uint32",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:29"
+          },
+          {
+            "label": "requestIds",
+            "offset": 0,
+            "slot": "212",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:30"
+          },
+          {
+            "label": "whitelists",
+            "offset": 0,
+            "slot": "213",
+            "type": "t_struct(Whitelists)2412_storage",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:65"
+          },
+          {
+            "label": "allowlists",
+            "offset": 0,
+            "slot": "218",
+            "type": "t_struct(AllowLists)2423_storage",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:66"
+          },
+          {
+            "label": "whitelist",
+            "offset": 0,
+            "slot": "223",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:69"
+          },
+          {
+            "label": "maxWhitelistWalletMints",
+            "offset": 0,
+            "slot": "224",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:70"
+          },
+          {
+            "label": "allowlist",
+            "offset": 0,
+            "slot": "225",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:73"
+          },
+          {
+            "label": "maxAllowlistWalletMints",
+            "offset": 0,
+            "slot": "226",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:74"
+          },
+          {
+            "label": "randomWordsToRequestId",
+            "offset": 0,
+            "slot": "227",
+            "type": "t_mapping(t_uint256,t_array(t_uint256)dyn_storage)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:75"
+          },
+          {
+            "label": "requestIdToAddress",
+            "offset": 0,
+            "slot": "228",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:78"
+          },
+          {
+            "label": "tokenIdToAddress",
+            "offset": 0,
+            "slot": "229",
+            "type": "t_mapping(t_uint256,t_struct(TokenStatus)2401_storage)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:79"
+          },
+          {
+            "label": "requestIdToRequestStatus",
+            "offset": 0,
+            "slot": "230",
+            "type": "t_mapping(t_uint256,t_struct(RequestStatus)2396_storage)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:80"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(VRFCoordinatorV2Interface)174": {
+            "label": "contract VRFCoordinatorV2Interface",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes32,t_struct(RoleData)209_storage)": {
+            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_array(t_uint256)dyn_storage)": {
+            "label": "mapping(uint256 => uint256[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(RequestStatus)2396_storage)": {
+            "label": "mapping(uint256 => struct WowTNft721A.RequestStatus)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(TokenStatus)2401_storage)": {
+            "label": "mapping(uint256 => struct WowTNft721A.TokenStatus)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(AllowLists)2423_storage": {
+            "label": "struct WowTNft721A.AllowLists",
+            "members": [
+              {
+                "label": "allowlistPrice",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "allowlistLimit",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "allowlistAddressCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "maxAllowListSupply",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "allowlistTokenSold",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_struct(RequestStatus)2396_storage": {
+            "label": "struct WowTNft721A.RequestStatus",
+            "members": [
+              {
+                "label": "fulfilled",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "exists",
+                "type": "t_bool",
+                "offset": 1,
+                "slot": "0"
+              },
+              {
+                "label": "randomWords",
+                "type": "t_array(t_uint256)dyn_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(RoleData)209_storage": {
+            "label": "struct AccessControlUpgradeable.RoleData",
+            "members": [
+              {
+                "label": "members",
+                "type": "t_mapping(t_address,t_bool)",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "adminRole",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(TokenStatus)2401_storage": {
+            "label": "struct WowTNft721A.TokenStatus",
+            "members": [
+              {
+                "label": "buyer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "exists",
+                "type": "t_bool",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(Whitelists)2412_storage": {
             "label": "struct WowTNft721A.Whitelists",
             "members": [
               {
