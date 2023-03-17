@@ -1,0 +1,11 @@
+{
+  "name": "hardhat-project",
+  "dependencies": {
+    "@chainlink/contracts": "^0.6.1",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@openzeppelin/contracts-upgradeable": "^4.8.2",
+    "@openzeppelin/hardhat-upgrades": "^1.22.1",
+    "dotenv": "^16.0.3",
+    "erc721a-upgradeable": "^4.2.3"
+  }
+}

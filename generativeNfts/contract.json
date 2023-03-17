@@ -1,0 +1,7 @@
+{
+  "name": "Generative Nfts",
+  "description": "A collection of Random token NFTs",
+  "image": "https://wowtalkiestestbucket.s3.ap-south-1.amazonaws.com/collections/GenerativeNfts/generativeNfts.jpg",
+  "external_link": "https://nft.wowtalkies.com",
+  "seller_fee_basis_points": 1000
+}
