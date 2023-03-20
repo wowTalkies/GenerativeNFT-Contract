@@ -15,10 +15,6 @@ contract NFT721A is ERC721AUpgradeable, OwnableUpgradeable {
         feeAddress = _newFeeAddress;
     }
 
-    function setBaseURI(string memory _newBaseURI) external onlyOwner {
-        baseTokenURI = _newBaseURI;
-    }
-
     function setContractUri(string memory _newContractUri) external onlyOwner {
         contractUri = _newContractUri;
     }
@@ -31,13 +27,18 @@ contract NFT721A is ERC721AUpgradeable, OwnableUpgradeable {
         tokenPrice = _newPrice;
     }
 
+    /// Default functions
+    function _startTokenId() internal view virtual override returns (uint256) {
+        return 1;
+    }
+
     function totalMinted() public view returns (uint256) {
         return _totalMinted();
     }
 
-    function _baseURI() internal view virtual override returns (string memory) {
-        return baseTokenURI;
-    }
+    // function _baseURI() internal view virtual override returns (string memory) {
+    //     return baseTokenURI;
+    // }
 
     function exists(uint256 tokenId) public view returns (bool) {
         return _exists(tokenId);

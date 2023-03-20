@@ -3,20 +3,21 @@ const hre = require('hardhat');
 
 async function main() {
   const factory = await ethers.getContractFactory('WowTNft721A');
-  const contract = await upgrades.deployProxy(factory, [
-    'GenerativeNFTs',
-    'wowT',
-    'https://wowtalkiestestbucket.s3.ap-south-1.amazonaws.com/collections/GenerativeNfts/contract.json', // contractUri
-    'https://wowtalkiestestbucket.s3.ap-south-1.amazonaws.com/collections/GenerativeNfts/preRevealUri.json',
-    5000,
-    '0x26BA546b581f859BFeE6821958097E8bA1C24444',
-    3555, // mumbai network
-    '0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed', // mumbai network
-    '0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f', // mumbai network
-  ]);
+  // const contract = await upgrades.deployProxy(factory, [
+  //   'GenerativeNFTs',
+  //   'wowT',
+  //   'https://wowtalkiestestbucket.s3.ap-south-1.amazonaws.com/collections/GenerativeNfts/contract.json', // contractUri
+  //   'https://wowtalkiestestbucket.s3.ap-south-1.amazonaws.com/collections/GenerativeNfts/preRevealUri.json',
+  //   '1000000000000000',
+  //   5000,
+  //   '0x26BA546b581f859BFeE6821958097E8bA1C24444',
+  //   10484, // goerli network
+  //   '0x2ca8e0c643bde4c2e08ab1fa0da3401adad7734d', // goerli network
+  //   '0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15', // goerli network
+  // ]);
 
   // const contract = await upgrades.upgradeProxy(
-  //   '0x885e3B74736DF66f5541B983f7915679329bf87e',
+  //   '0x157777194851d31ca2d304b4b02bad25ec4289b7',
   //   factory
   // );
 

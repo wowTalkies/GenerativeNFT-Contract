@@ -44,8 +44,8 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     AllowLists public allowlists;
 
     // Reveal
-    string private preRevealURI;
-    string private postRevealBaseURI;
+    string public preRevealURI;
+    string public postRevealURI;
     bool public revealed;
     uint256 public tokenOffset;
 
@@ -56,15 +56,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     uint32 public callbackGasLimit;
     uint16 public requestConfirmations;
     uint32 public numWords;
-    // uint256[] public requestIds;
-
-    // struct used for chainlink
-
-    // struct RequestStatus {
-    //     bool fulfilled;
-    //     bool exists;
-    //     uint256[] randomWords;
-    // }
 
     // Set about the Whitelist Person
     mapping(address => bool) private whitelist;
@@ -73,8 +64,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     // Set about the Allowlist Person
     mapping(address => bool) private allowlist;
     mapping(address => uint) public maxAllowlistWalletMints;
-
-    // mapping(uint256 => RequestStatus) public requestIdToRequestStatus;
 
     event TokensSold(address market, uint256[] tokenIds, uint256 price, address buyer);
     event RevealStarted(address market, string newUri);
@@ -92,6 +81,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         string memory symbol,
         string memory _contractUri,
         string memory _preRevealURI,
+        uint256 _tokenPrice,
         uint256 _maxSupply,
         address _feeAddress,
         uint64 _sSubscriptionId,
@@ -100,6 +90,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     ) external initializerERC721A initializer {
         contractUri = _contractUri;
         preRevealURI = _preRevealURI;
+        tokenPrice = _tokenPrice;
         maxSupply = _maxSupply;
         feeAddress = _feeAddress;
         sKeyHash = _sKeyHash;
@@ -107,7 +98,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         requestConfirmations = 3;
         numWords = 1;
         sSubscriptionId = _sSubscriptionId;
-        saleStatus = SaleStatus.PAUSED;
+        saleStatus = SaleStatus.PUBLIC;
         __ERC721A_init(name, symbol);
         __Ownable_init();
         __VRFConsumerBaseV2_init(_vrfCoordinator);
@@ -218,10 +209,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         return whitelist[user];
     }
 
-    // function totalWhitelistTokenSold() external view returns (uint) {
-    //     return whitelists.whitelistTokenSold;
-    // }
-
     /**********    For allowlist      *********/
     function setAllowlistAddress(
         address[] calldata allowlistaddresses,
@@ -254,15 +241,11 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         return allowlist[user];
     }
 
-    // function totalAllowlistTokenSold() external view returns (uint) {
-    //     return allowlists.allowlistTokenSold;
-    // }
-
     // Request Token Offset
     // NOTE: contract must be approved for and own LINK before calling this function
     function startReveal(string memory _newURI) external onlyOwner returns (uint256 requestId) {
         require(!revealed, "ALREADY REVEALED");
-        postRevealBaseURI = _newURI;
+        postRevealURI = _newURI;
         requestId = coordinator.requestRandomWords(
               sKeyHash,
               sSubscriptionId,
@@ -292,12 +275,17 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         require(_exists(_tokenId), "ERC721Metadata: URI query for nonexistent token");
         if (!revealed) return preRevealURI;
         uint256 shiftedTokenId = (_tokenId + tokenOffset) % totalSupply();
-        return string(abi.encodePacked(postRevealBaseURI, shiftedTokenId.toString()));
+        return string(abi.encodePacked(postRevealURI, shiftedTokenId.toString()));
     }
 
     // Sale State Function
     function setSaleStatus(SaleStatus _status) external onlyOwner {
         saleStatus = _status;
+    }
+
+    // Sale State Function
+    function setPreRevealURI(string memory _newPreRevealURI) external onlyOwner {
+        preRevealURI = _newPreRevealURI;
     }
 
     // for developement use

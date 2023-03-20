@@ -1,20 +1,14 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0xB704921d7d5184eF3385ba219eCca8cc2C351DEF",
-    "txHash": "0x9084f0454146a441375a3548fd8ed3f89d0a9a86f3648f9061451d41cef989bc"
+    "address": "0x4408E1C1e07A128d6baDB3EE7735b3611737c87c",
+    "txHash": "0xa299e77eaf023fa9ca2e4b55de5b4377bcae789eb24137142bcd9bba35494396"
   },
-  "proxies": [
-    {
-      "address": "0xeE22Ce7744dC4101fEaBA4Db2bB13Dfcd54019B2",
-      "txHash": "0xce057a100b8c9bfbfa208aec1d56aeff959f57fccc2478245881b6d33639d444",
-      "kind": "transparent"
-    }
-  ],
+  "proxies": [],
   "impls": {
-    "ec74bf6e78c3b0e987e8ed63b3610f2302729cfc90098560736c9863b209cb4b": {
-      "address": "0xbb84Bfe2b62FbeD35899818164412119aDb1e55D",
-      "txHash": "0xb60c7daad57159200f957595af37db530ec27db3238a72d3a763d1248367e0ed",
+    "3b37f149a3ab8f6dc83c65bf3714c01c43a3d4a816bec21df5199790f0bf1597": {
+      "address": "0x1F39f08DFA162b5C49853AeAd053fDE420Cee24b",
+      "txHash": "0xf2ac935279d6d1a6150c78478fbb38241986d6db1e93cae509d346b4a48deadb",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [
@@ -127,7 +121,7 @@
             "label": "saleStatus",
             "offset": 20,
             "slot": "156",
-            "type": "t_enum(SaleStatus)2013",
+            "type": "t_enum(SaleStatus)2002",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:23"
           },
@@ -135,7 +129,7 @@
             "label": "whitelists",
             "offset": 0,
             "slot": "157",
-            "type": "t_struct(Whitelists)2027_storage",
+            "type": "t_struct(Whitelists)2016_storage",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:43"
           },
@@ -143,7 +137,7 @@
             "label": "allowlists",
             "offset": 0,
             "slot": "162",
-            "type": "t_struct(AllowLists)2038_storage",
+            "type": "t_struct(AllowLists)2027_storage",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:44"
           },
@@ -156,7 +150,7 @@
             "src": "contracts\\WowTNft721A.sol:47"
           },
           {
-            "label": "postRevealBaseURI",
+            "label": "postRevealURI",
             "offset": 0,
             "slot": "168",
             "type": "t_string_storage",
@@ -225,7 +219,7 @@
             "slot": "173",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:70"
+            "src": "contracts\\WowTNft721A.sol:61"
           },
           {
             "label": "maxWhitelistWalletMints",
@@ -233,7 +227,7 @@
             "slot": "174",
             "type": "t_mapping(t_address,t_uint256)",
             "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:71"
+            "src": "contracts\\WowTNft721A.sol:62"
           },
           {
             "label": "allowlist",
@@ -241,7 +235,7 @@
             "slot": "175",
             "type": "t_mapping(t_address,t_bool)",
             "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:74"
+            "src": "contracts\\WowTNft721A.sol:65"
           },
           {
             "label": "maxAllowlistWalletMints",
@@ -249,7 +243,7 @@
             "slot": "176",
             "type": "t_mapping(t_address,t_uint256)",
             "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:75"
+            "src": "contracts\\WowTNft721A.sol:66"
           }
         ],
         "types": {
@@ -277,7 +271,7 @@
             "label": "contract VRFCoordinatorV2Interface",
             "numberOfBytes": "20"
           },
-          "t_enum(SaleStatus)2013": {
+          "t_enum(SaleStatus)2002": {
             "label": "enum WowTNft721A.SaleStatus",
             "members": [
               "PAUSED",
@@ -299,7 +293,7 @@
             "label": "string",
             "numberOfBytes": "32"
           },
-          "t_struct(AllowLists)2038_storage": {
+          "t_struct(AllowLists)2027_storage": {
             "label": "struct WowTNft721A.AllowLists",
             "members": [
               {
@@ -335,7 +329,7 @@
             ],
             "numberOfBytes": "160"
           },
-          "t_struct(Whitelists)2027_storage": {
+          "t_struct(Whitelists)2016_storage": {
             "label": "struct WowTNft721A.Whitelists",
             "members": [
               {
