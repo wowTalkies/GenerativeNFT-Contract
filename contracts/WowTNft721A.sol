@@ -287,9 +287,4 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     function setPreRevealURI(string memory _newPreRevealURI) external onlyOwner {
         preRevealURI = _newPreRevealURI;
     }
-
-    // for developement use
-    function setReveal(bool _status) external onlyOwner {
-        revealed = _status;
-    }
 }
