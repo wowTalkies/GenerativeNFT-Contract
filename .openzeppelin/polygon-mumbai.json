@@ -1,14 +1,20 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x4408E1C1e07A128d6baDB3EE7735b3611737c87c",
-    "txHash": "0xa299e77eaf023fa9ca2e4b55de5b4377bcae789eb24137142bcd9bba35494396"
+    "address": "0x474E0AF30FDc7378338fAa084B81648aa7c6bAAa",
+    "txHash": "0xeaf14c3917a9825cc7911c444e26a469fccfe0b93281cfecd342c362c3e588a2"
   },
-  "proxies": [],
+  "proxies": [
+    {
+      "address": "0x2d6326dC0aefd142d5B94915C48E6B47B744293D",
+      "txHash": "0x1b496dbdd29c5c6cf412f59453c817ffed7f003fb3a641e6be1206b464b3fda5",
+      "kind": "transparent"
+    }
+  ],
   "impls": {
-    "3b37f149a3ab8f6dc83c65bf3714c01c43a3d4a816bec21df5199790f0bf1597": {
-      "address": "0x1F39f08DFA162b5C49853AeAd053fDE420Cee24b",
-      "txHash": "0xf2ac935279d6d1a6150c78478fbb38241986d6db1e93cae509d346b4a48deadb",
+    "c76afb3d2f0e65e3d4c3963f92295417803debb660130a35249f23dfb92ff1a8": {
+      "address": "0x05bc0B0d0aD31B1809ec3d97fE105F0B60DdfB9d",
+      "txHash": "0x8a19cfb32a360bd7d3998e1e069d756e26238d11ef7053fd4697b71c17ff17c1",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [
@@ -54,7 +60,7 @@
             "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
           },
           {
-            "label": "tokenPrice",
+            "label": "maxSupply",
             "offset": 0,
             "slot": "101",
             "type": "t_uint256",
@@ -62,15 +68,15 @@
             "src": "contracts\\NFT721A.sol:8"
           },
           {
-            "label": "maxSupply",
+            "label": "contractUri",
             "offset": 0,
             "slot": "102",
-            "type": "t_uint256",
+            "type": "t_string_storage",
             "contract": "NFT721A",
             "src": "contracts\\NFT721A.sol:9"
           },
           {
-            "label": "contractUri",
+            "label": "baseTokenURI",
             "offset": 0,
             "slot": "103",
             "type": "t_string_storage",
@@ -78,25 +84,17 @@
             "src": "contracts\\NFT721A.sol:10"
           },
           {
-            "label": "baseTokenURI",
+            "label": "feeAddress",
             "offset": 0,
             "slot": "104",
-            "type": "t_string_storage",
+            "type": "t_address",
             "contract": "NFT721A",
             "src": "contracts\\NFT721A.sol:11"
           },
           {
-            "label": "feeAddress",
-            "offset": 0,
-            "slot": "105",
-            "type": "t_address",
-            "contract": "NFT721A",
-            "src": "contracts\\NFT721A.sol:12"
-          },
-          {
             "label": "vrfCoordinator",
             "offset": 0,
-            "slot": "106",
+            "slot": "105",
             "type": "t_address",
             "contract": "VRFConsumerBaseV2Upgradeable",
             "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:109"
@@ -104,7 +102,7 @@
           {
             "label": "__gap",
             "offset": 0,
-            "slot": "107",
+            "slot": "106",
             "type": "t_array(t_uint256)49_storage",
             "contract": "VRFConsumerBaseV2Upgradeable",
             "src": "@chainlink\\contracts\\src\\v0.8\\dev\\VRFConsumerBaseV2Upgradeable.sol:113"
@@ -112,138 +110,162 @@
           {
             "label": "coordinator",
             "offset": 0,
-            "slot": "156",
+            "slot": "155",
             "type": "t_contract(VRFCoordinatorV2Interface)174",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:12"
           },
           {
-            "label": "saleStatus",
-            "offset": 20,
+            "label": "tokenPrice",
+            "offset": 0,
             "slot": "156",
-            "type": "t_enum(SaleStatus)2002",
+            "type": "t_uint256",
             "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:23"
+            "src": "contracts\\WowTNft721A.sol:14"
+          },
+          {
+            "label": "saleStatus",
+            "offset": 0,
+            "slot": "157",
+            "type": "t_enum(SaleStatus)1980",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:24"
           },
           {
             "label": "whitelists",
             "offset": 0,
-            "slot": "157",
-            "type": "t_struct(Whitelists)2016_storage",
+            "slot": "158",
+            "type": "t_struct(Whitelists)1992_storage",
             "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:43"
+            "src": "contracts\\WowTNft721A.sol:49"
           },
           {
             "label": "allowlists",
             "offset": 0,
             "slot": "162",
-            "type": "t_struct(AllowLists)2027_storage",
-            "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:44"
-          },
-          {
-            "label": "preRevealURI",
-            "offset": 0,
-            "slot": "167",
-            "type": "t_string_storage",
-            "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:47"
-          },
-          {
-            "label": "postRevealURI",
-            "offset": 0,
-            "slot": "168",
-            "type": "t_string_storage",
-            "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:48"
-          },
-          {
-            "label": "revealed",
-            "offset": 0,
-            "slot": "169",
-            "type": "t_bool",
-            "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:49"
-          },
-          {
-            "label": "tokenOffset",
-            "offset": 0,
-            "slot": "170",
-            "type": "t_uint256",
+            "type": "t_struct(AllowLists)2001_storage",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:50"
           },
           {
-            "label": "sKeyHash",
+            "label": "publicSales",
             "offset": 0,
-            "slot": "171",
-            "type": "t_bytes32",
+            "slot": "166",
+            "type": "t_struct(PublicSales)2008_storage",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:51"
+          },
+          {
+            "label": "preRevealURI",
+            "offset": 0,
+            "slot": "169",
+            "type": "t_string_storage",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:54"
           },
           {
-            "label": "sSubscriptionId",
+            "label": "postRevealURI",
             "offset": 0,
-            "slot": "172",
-            "type": "t_uint64",
+            "slot": "170",
+            "type": "t_string_storage",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:55"
           },
           {
-            "label": "callbackGasLimit",
-            "offset": 8,
-            "slot": "172",
-            "type": "t_uint32",
+            "label": "revealed",
+            "offset": 0,
+            "slot": "171",
+            "type": "t_bool",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:56"
           },
           {
-            "label": "requestConfirmations",
-            "offset": 12,
+            "label": "tokenOffset",
+            "offset": 0,
             "slot": "172",
-            "type": "t_uint16",
+            "type": "t_uint256",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:57"
           },
           {
-            "label": "numWords",
-            "offset": 14,
-            "slot": "172",
-            "type": "t_uint32",
-            "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:58"
-          },
-          {
-            "label": "whitelist",
+            "label": "sKeyHash",
             "offset": 0,
             "slot": "173",
-            "type": "t_mapping(t_address,t_bool)",
+            "type": "t_bytes32",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:61"
           },
           {
-            "label": "maxWhitelistWalletMints",
+            "label": "sSubscriptionId",
             "offset": 0,
             "slot": "174",
-            "type": "t_mapping(t_address,t_uint256)",
+            "type": "t_uint64",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:62"
           },
           {
-            "label": "allowlist",
-            "offset": 0,
-            "slot": "175",
-            "type": "t_mapping(t_address,t_bool)",
+            "label": "callbackGasLimit",
+            "offset": 8,
+            "slot": "174",
+            "type": "t_uint32",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:63"
+          },
+          {
+            "label": "requestConfirmations",
+            "offset": 12,
+            "slot": "174",
+            "type": "t_uint16",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:64"
+          },
+          {
+            "label": "numWords",
+            "offset": 14,
+            "slot": "174",
+            "type": "t_uint32",
             "contract": "WowTNft721A",
             "src": "contracts\\WowTNft721A.sol:65"
           },
           {
-            "label": "maxAllowlistWalletMints",
+            "label": "whitelist",
+            "offset": 0,
+            "slot": "175",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:68"
+          },
+          {
+            "label": "maxWhitelistWalletMints",
             "offset": 0,
             "slot": "176",
             "type": "t_mapping(t_address,t_uint256)",
             "contract": "WowTNft721A",
-            "src": "contracts\\WowTNft721A.sol:66"
+            "src": "contracts\\WowTNft721A.sol:69"
+          },
+          {
+            "label": "allowlist",
+            "offset": 0,
+            "slot": "177",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:72"
+          },
+          {
+            "label": "maxAllowlistWalletMints",
+            "offset": 0,
+            "slot": "178",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:73"
+          },
+          {
+            "label": "maxPublicWalletMints",
+            "offset": 0,
+            "slot": "179",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "WowTNft721A",
+            "src": "contracts\\WowTNft721A.sol:76"
           }
         ],
         "types": {
@@ -271,7 +293,7 @@
             "label": "contract VRFCoordinatorV2Interface",
             "numberOfBytes": "20"
           },
-          "t_enum(SaleStatus)2002": {
+          "t_enum(SaleStatus)1980": {
             "label": "enum WowTNft721A.SaleStatus",
             "members": [
               "PAUSED",
@@ -293,77 +315,89 @@
             "label": "string",
             "numberOfBytes": "32"
           },
-          "t_struct(AllowLists)2027_storage": {
+          "t_struct(AllowLists)2001_storage": {
             "label": "struct WowTNft721A.AllowLists",
             "members": [
-              {
-                "label": "allowlistPrice",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
               {
                 "label": "allowlistLimit",
                 "type": "t_uint256",
                 "offset": 0,
-                "slot": "1"
+                "slot": "0"
               },
               {
                 "label": "allowlistAddressCount",
                 "type": "t_uint256",
                 "offset": 0,
-                "slot": "2"
+                "slot": "1"
               },
               {
                 "label": "maxAllowListSupply",
                 "type": "t_uint256",
                 "offset": 0,
-                "slot": "3"
+                "slot": "2"
               },
               {
                 "label": "allowlistTokenSold",
                 "type": "t_uint256",
                 "offset": 0,
-                "slot": "4"
+                "slot": "3"
               }
             ],
-            "numberOfBytes": "160"
+            "numberOfBytes": "128"
           },
-          "t_struct(Whitelists)2016_storage": {
-            "label": "struct WowTNft721A.Whitelists",
+          "t_struct(PublicSales)2008_storage": {
+            "label": "struct WowTNft721A.PublicSales",
             "members": [
               {
-                "label": "whitelistPrice",
+                "label": "publicWalletLimit",
                 "type": "t_uint256",
                 "offset": 0,
                 "slot": "0"
               },
               {
-                "label": "whitelistLimit",
+                "label": "maxPublicSaleSupply",
                 "type": "t_uint256",
                 "offset": 0,
                 "slot": "1"
               },
               {
-                "label": "whitelistAddressCount",
+                "label": "publicTokenSold",
                 "type": "t_uint256",
                 "offset": 0,
                 "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_struct(Whitelists)1992_storage": {
+            "label": "struct WowTNft721A.Whitelists",
+            "members": [
+              {
+                "label": "whitelistLimit",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "whitelistAddressCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
               },
               {
                 "label": "maxWhiteListSupply",
                 "type": "t_uint256",
                 "offset": 0,
-                "slot": "3"
+                "slot": "2"
               },
               {
                 "label": "whitelistTokenSold",
                 "type": "t_uint256",
                 "offset": 0,
-                "slot": "4"
+                "slot": "3"
               }
             ],
-            "numberOfBytes": "160"
+            "numberOfBytes": "128"
           },
           "t_uint16": {
             "label": "uint16",

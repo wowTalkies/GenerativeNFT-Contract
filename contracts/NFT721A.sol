@@ -5,7 +5,6 @@ import { ERC721AUpgradeable, IERC721AUpgradeable } from "erc721a-upgradeable/con
 import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract NFT721A is ERC721AUpgradeable, OwnableUpgradeable {
-    uint256 public tokenPrice;
     uint256 public maxSupply;
     string public contractUri;
     string public baseTokenURI;
@@ -21,15 +20,6 @@ contract NFT721A is ERC721AUpgradeable, OwnableUpgradeable {
 
     function setMaxSupply(uint256 _newSupply) external onlyOwner {
         maxSupply = _newSupply;
-    }
-
-    function setTokenPrice(uint256 _newPrice) external onlyOwner {
-        tokenPrice = _newPrice;
-    }
-
-    /// Default functions
-    function _startTokenId() internal view virtual override returns (uint256) {
-        return 1;
     }
 
     function totalMinted() public view returns (uint256) {
