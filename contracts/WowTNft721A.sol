@@ -14,10 +14,10 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     uint256 public tokenPrice;
 
     enum SaleStatus {
-      PAUSED,
-      WHITELIST,
-      ALLOWLIST,
-      PUBLIC
+      Paused,
+      Whitelist,
+      Allowlist,
+      Public
     }
 
     // Set Sale as PAUSED on DEPLOY
@@ -80,7 +80,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
 
     modifier mintStatus {
         require(
-            saleStatus != SaleStatus.PAUSED,
+            saleStatus != SaleStatus.Paused,
             "token is paused"
         );
         _;
@@ -106,7 +106,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         requestConfirmations = 3;
         numWords = 1;
         sSubscriptionId = _sSubscriptionId;
-        saleStatus = SaleStatus.PAUSED;
+        saleStatus = SaleStatus.Paused;
         __ERC721A_init(name, symbol);
         __Ownable_init();
         __VRFConsumerBaseV2_init(_vrfCoordinator);
@@ -114,19 +114,19 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function buyToken(uint256 quantity) external payable mintStatus {
-        if(saleStatus == SaleStatus.WHITELIST) {
+        if(saleStatus == SaleStatus.Whitelist) {
             whitelistBuyToken(quantity);
         }
-        else if(saleStatus == SaleStatus.ALLOWLIST) {
+        else if(saleStatus == SaleStatus.Allowlist) {
             allowlistBuyToken(quantity);
         }
-        else if(saleStatus == SaleStatus.PUBLIC) {
+        else if(saleStatus == SaleStatus.Public) {
             publicBuyToken(quantity);
         }
     }
 
     function whitelistBuyToken(uint256 quantity) internal {
-        require(saleStatus == SaleStatus.WHITELIST, "Whitelist sale not live");
+        require(saleStatus == SaleStatus.Whitelist, "Whitelist sale not live");
         require(whitelist[_msgSender()], "You are not whitelisted");
         require(
             maxWhitelistWalletMints[_msgSender()] + quantity <= whitelists.whitelistLimit,
@@ -150,7 +150,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function allowlistBuyToken(uint256 quantity) internal {
-        require(saleStatus == SaleStatus.ALLOWLIST, "Allowlist sale not live");
+        require(saleStatus == SaleStatus.Allowlist, "Allowlist sale not live");
         require(allowlist[_msgSender()], "You are not allowlisted");
         require(
             maxAllowlistWalletMints[_msgSender()] + quantity <= allowlists.allowlistLimit,
@@ -174,7 +174,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function publicBuyToken(uint256 quantity) internal {
-        require(saleStatus == SaleStatus.PUBLIC, "Public sale not live");
+        require(saleStatus == SaleStatus.Public, "Public sale not live");
         require(totalMinted() + quantity <= publicSales.maxPublicSaleSupply, "Maximum supply reached");
         require(
             maxPublicWalletMints[_msgSender()] + quantity <= publicSales.publicWalletLimit,
@@ -207,7 +207,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         whitelists.whitelistLimit = _whitelistLimit;
         tokenPrice = _whitelistPrice;
         whitelists.maxWhiteListSupply = _maxwhiteListSupply;
-        saleStatus = SaleStatus.WHITELIST;
+        saleStatus = SaleStatus.Whitelist;
         whitelists.whitelistAddressCount += whitelistaddresses.length;
     }
 
@@ -228,6 +228,10 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         }
     }
 
+    function findBalancedWhitelistMint(address user) external view returns (uint) {
+        return (whitelists.whitelistLimit - maxWhitelistWalletMints[user]);
+    }
+
     /**********    For allowlist      *********/
     function setAllowlistAddress(
         address[] calldata allowlistaddresses,
@@ -242,7 +246,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         allowlists.allowlistLimit = _allowlistLimit;
         tokenPrice = _allowlistPrice;
         allowlists.maxAllowListSupply = _maxAllowListSupply;
-        saleStatus = SaleStatus.ALLOWLIST;
+        saleStatus = SaleStatus.Allowlist;
         allowlists.allowlistAddressCount += allowlistaddresses.length;
     }
 
@@ -263,17 +267,25 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         }
     }
 
+    function findBalancedAllowlistMint(address user) external view returns (uint) {
+        return (allowlists.allowlistLimit - maxAllowlistWalletMints[user]);
+    }
+
     /*********** For public ********/
 
     function setPublicSale(uint256 _tokenPrice, uint256 _publicWalletLimit) external onlyOwner {
         tokenPrice = _tokenPrice;
         publicSales.publicWalletLimit = _publicWalletLimit;
-        saleStatus = SaleStatus.PUBLIC;
+        saleStatus = SaleStatus.Public;
         publicSales.maxPublicSaleSupply = maxSupply - (allowlists.allowlistTokenSold + whitelists.whitelistTokenSold);
     }
 
     function setPublicTokenPrice(uint256 _newPrice) external onlyOwner {
         tokenPrice = _newPrice;
+    }
+
+    function findBalancedPublicMint(address user) external view returns (uint) {
+        return (publicSales.publicWalletLimit - maxPublicWalletMints[user]);
     }
 
     // Request Token Offset
@@ -288,12 +300,12 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
               callbackGasLimit,
               numWords
         );
-        saleStatus = SaleStatus.PAUSED;
+        saleStatus = SaleStatus.Paused;
         emit RevealStarted(address(this), _newURI);
         return requestId;
     }
 
-    // CHAINLINK CALLBACK FOR TOKEN OFFSET
+    // Chainlink callback for token offset
 
     function fulfillRandomWords(
         uint256 requestId,
@@ -315,9 +327,9 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     // Sale State Function
-    function setSaleStatus(SaleStatus _status) external onlyOwner {
-        saleStatus = _status;
-    }
+    // function setSaleStatus(SaleStatus _status) external onlyOwner {
+    //     saleStatus = _status;
+    // }
 
     // Sale State Function
     function setPreRevealURI(string memory _newPreRevealURI) external onlyOwner {

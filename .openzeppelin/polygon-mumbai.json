@@ -1,20 +1,20 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x474E0AF30FDc7378338fAa084B81648aa7c6bAAa",
-    "txHash": "0xeaf14c3917a9825cc7911c444e26a469fccfe0b93281cfecd342c362c3e588a2"
+    "address": "0xe48c32ea3604BF140D0A059A6B7fbbb440677F69",
+    "txHash": "0x55d47fe77d8666c86d1e9eb238bda9e1ab26cb3ef6b3a8361b77632f9ca8bab8"
   },
   "proxies": [
     {
-      "address": "0x2d6326dC0aefd142d5B94915C48E6B47B744293D",
-      "txHash": "0x1b496dbdd29c5c6cf412f59453c817ffed7f003fb3a641e6be1206b464b3fda5",
+      "address": "0xE2acE91e24CE707a63ad4071068C82a3F49B78c1",
+      "txHash": "0xc075fa16db66d7b2539a1222422807815543a0a6acfaefd1113ba6ba367d8673",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "c76afb3d2f0e65e3d4c3963f92295417803debb660130a35249f23dfb92ff1a8": {
-      "address": "0x05bc0B0d0aD31B1809ec3d97fE105F0B60DdfB9d",
-      "txHash": "0x8a19cfb32a360bd7d3998e1e069d756e26238d11ef7053fd4697b71c17ff17c1",
+    "c0303b32ad186437809b3beb112032beec03c2ea73192573674c85cd95279315": {
+      "address": "0x278aEe890c4A10720B8B2E4A289054362C9b7042",
+      "txHash": "0x5c8b85faada703c12ef6ab25b45727ceb11f6437c5e9338f4a8bbcc384edf624",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [
@@ -296,10 +296,10 @@
           "t_enum(SaleStatus)1980": {
             "label": "enum WowTNft721A.SaleStatus",
             "members": [
-              "PAUSED",
-              "WHITELIST",
-              "ALLOWLIST",
-              "PUBLIC"
+              "Paused",
+              "Whitelist",
+              "Allowlist",
+              "Public"
             ],
             "numberOfBytes": "1"
           },
