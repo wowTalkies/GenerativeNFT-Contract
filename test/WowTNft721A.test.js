@@ -118,10 +118,6 @@ describe('WowTNft721A', function () {
         await contract.setFeeAddress(newFeeAddress);
         await expect(await contract.feeAddress()).to.equal(newFeeAddress);
       });
-      it('should successfully set and retrieve pauseToken', async () => {
-        await contract.setSaleStatus(0);
-        await expect(await contract.saleStatus()).to.equal(0);
-      });
       // it('should successfully call setReveal if the caller is owner', async () => {
       //   await contract.startReveal('https://testuri');
       //   await expect(await contract.postRevealBaseURI()).to.equal(
@@ -200,17 +196,11 @@ describe('WowTNft721A', function () {
             .setFeeAddress('0x96FFb451863ace1fE67F2dfc87A45e5298fcc01e')
         ).to.be.revertedWith('Ownable: caller is not the owner');
       });
-      it('should not be able to setPauseToken', async () => {
-        await expect(
-          contract.connect(otherUser).setSaleStatus(0)
-        ).to.be.revertedWith('Ownable: caller is not the owner');
-      });
     });
   });
   describe('buyToken', function () {
     describe('whitelist buyToken', function () {
       it('should successfully whitelist buyToken if caller is whitelisted', async () => {
-        await contract.setSaleStatus(1);
         await contract.setWhitelistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           6,
@@ -222,9 +212,11 @@ describe('WowTNft721A', function () {
           value: hre.ethers.utils.parseEther('0.0003'),
         });
         await expect(await contract.totalMinted()).to.be.equal(6);
+        await expect(
+          await contract.findBalancedWhitelistMint(otherUser.address)
+        ).to.be.equal(0);
       });
       it('should not whitelist buyToken if token is paused', async () => {
-        await contract.setSaleStatus(0);
         await expect(
           contract.connect(otherUser).buyToken(16, {
             from: otherUser.address,
@@ -233,7 +225,12 @@ describe('WowTNft721A', function () {
         ).to.be.revertedWith('token is paused');
       });
       it('should not whitelist buyToken if caller is non whitelisted', async () => {
-        await contract.setSaleStatus(1);
+        await contract.setWhitelistAddress(
+          ['0x34F6E921d22539657d58a17973a6701255e33D47'],
+          6,
+          50000000000000,
+          20
+        );
         await expect(
           contract.connect(otherUser).buyToken(5, {
             from: otherUser.address,
@@ -241,10 +238,51 @@ describe('WowTNft721A', function () {
           })
         ).to.be.revertedWith('You are not whitelisted');
       });
+      it('should not whitelist buyToken if amount is greater than wallet max supply', async () => {
+        await contract.setWhitelistAddress(
+          ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
+          3,
+          50000000000000,
+          20
+        );
+        await expect(
+          contract.connect(otherUser).buyToken(6, {
+            from: otherUser.address,
+            value: hre.ethers.utils.parseEther('60.0'),
+          })
+        ).to.be.revertedWith("Maximum NFT's per wallet reached");
+      });
+      it('should not whitelist buyToken if amount is greater than public max supply', async () => {
+        await contract.setWhitelistAddress(
+          ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
+          10,
+          50000000000000,
+          8
+        );
+        await expect(
+          contract.connect(otherUser).buyToken(10, {
+            from: otherUser.address,
+            value: hre.ethers.utils.parseEther('160.0'),
+          })
+        ).to.be.revertedWith('Maximum whitelist supply reached');
+      });
+      it('should not whitelist buyToken if value is below the minimum public tokenPrice', async function () {
+        await contract.setWhitelistAddress(
+          ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
+          3,
+          50000000000000,
+          20
+        );
+        await expect(
+          contract.connect(otherUser).buyToken(1, {
+            from: otherUser.address,
+            value: hre.ethers.utils.parseEther('2.0'),
+          })
+        ).to.be.revertedWith('Not enough eth sent');
+      });
     });
     describe('allowlist buyToken', function () {
       it('should successfully allowlist buyToken if caller is allowlisted', async () => {
-        await contract.setSaleStatus(2);
         await contract.setAllowlistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           6,
@@ -256,9 +294,11 @@ describe('WowTNft721A', function () {
           value: hre.ethers.utils.parseEther('0.0002'),
         });
         await expect(await contract.totalMinted()).to.be.equal(4);
+        await expect(
+          await contract.findBalancedAllowlistMint(otherUser.address)
+        ).to.be.equal(2);
       });
       it('should not allowlist buyToken if token is paused', async () => {
-        await contract.setSaleStatus(0);
         await expect(
           contract.connect(otherUser).buyToken(16, {
             from: otherUser.address,
@@ -267,7 +307,12 @@ describe('WowTNft721A', function () {
         ).to.be.revertedWith('token is paused');
       });
       it('should not allowlist buyToken if caller is non allowlisted', async () => {
-        await contract.setSaleStatus(2);
+        await contract.setAllowlistAddress(
+          ['0x34F6E921d22539657d58a17973a6701255e33D47'],
+          6,
+          50000000000000,
+          20
+        );
         await expect(
           contract.connect(otherUser).buyToken(5, {
             from: otherUser.address,
@@ -275,19 +320,62 @@ describe('WowTNft721A', function () {
           })
         ).to.be.revertedWith('You are not allowlisted');
       });
+      it('should not allowlist buyToken if amount is greater than wallet max supply', async () => {
+        await contract.setAllowlistAddress(
+          ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
+          3,
+          50000000000000,
+          20
+        );
+        await expect(
+          contract.connect(otherUser).buyToken(6, {
+            from: otherUser.address,
+            value: hre.ethers.utils.parseEther('60.0'),
+          })
+        ).to.be.revertedWith("Maximum NFT's per wallet reached");
+      });
+      it('should not allowlist buyToken if amount is greater than public max supply', async () => {
+        await contract.setAllowlistAddress(
+          ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
+          10,
+          50000000000000,
+          8
+        );
+        await expect(
+          contract.connect(otherUser).buyToken(10, {
+            from: otherUser.address,
+            value: hre.ethers.utils.parseEther('160.0'),
+          })
+        ).to.be.revertedWith('Maximum allowlist supply reached');
+      });
+      it('should not allowlist buyToken if value is below the minimum public tokenPrice', async function () {
+        await contract.setAllowlistAddress(
+          ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
+          3,
+          50000000000000,
+          20
+        );
+        await expect(
+          contract.connect(otherUser).buyToken(1, {
+            from: otherUser.address,
+            value: hre.ethers.utils.parseEther('2.0'),
+          })
+        ).to.be.revertedWith('Not enough eth sent');
+      });
     });
     describe('public buyToken', function () {
       it('should successfully public buyToken if caller is public', async () => {
         await contract.setPublicSale('1000000000000000000', 10);
-        await contract.setSaleStatus(3);
         await contract.connect(otherUser).buyToken(6, {
           from: otherUser.address,
           value: hre.ethers.utils.parseEther('6.0'),
         });
         await expect(await contract.exists(1)).to.be.equal(true);
+        await expect(
+          await contract.findBalancedPublicMint(otherUser.address)
+        ).to.be.equal(4);
       });
       it('should not public buyToken if token is paused', async () => {
-        await contract.setSaleStatus(0);
         await expect(
           contract.connect(otherUser).buyToken(16, {
             from: otherUser.address,
@@ -295,10 +383,18 @@ describe('WowTNft721A', function () {
           })
         ).to.be.revertedWith('token is paused');
       });
+      it('should not public buyToken if amount is greater than wallet max supply', async () => {
+        await contract.setPublicSale('1000000000000000000', 4);
+        await expect(
+          contract.connect(otherUser).buyToken(6, {
+            from: otherUser.address,
+            value: hre.ethers.utils.parseEther('60.0'),
+          })
+        ).to.be.revertedWith("Maximum NFT's per wallet reached");
+      });
       it('should not public buyToken if amount is greater than public max supply', async () => {
-        await contract.setSaleStatus(3);
+        await contract.setPublicSale('1000000000000000000', 10);
         await contract.setMaxSupply(5);
-        await contract.setPublicTokenPrice(hre.ethers.utils.parseEther('10.0'));
         await expect(
           contract.connect(otherUser).buyToken(16, {
             from: otherUser.address,
@@ -308,8 +404,6 @@ describe('WowTNft721A', function () {
       });
       it('should not public buyToken if value is below the minimum public tokenPrice', async function () {
         await contract.setPublicSale('1000000000000000000', 10);
-        await contract.setSaleStatus(3);
-        await contract.setPublicTokenPrice(hre.ethers.utils.parseEther('10.0'));
         await expect(
           contract.buyToken(1, {
             from: owner.address,
@@ -321,7 +415,6 @@ describe('WowTNft721A', function () {
     describe('burn token', function () {
       it('should successfully burn token if caller is token owner', async function () {
         await contract.setPublicSale('1000000000000000000', 10);
-        await contract.setSaleStatus(3);
         await contract.connect(otherUser).buyToken(6, {
           from: otherUser.address,
           value: hre.ethers.utils.parseEther('6.0'),
@@ -331,7 +424,6 @@ describe('WowTNft721A', function () {
       });
       it('should not burn token if caller is non token owner', async function () {
         await contract.setPublicSale('1000000000000000000', 10);
-        await contract.setSaleStatus(3);
         await contract.connect(otherUser).buyToken(6, {
           from: otherUser.address,
           value: hre.ethers.utils.parseEther('6.0'),

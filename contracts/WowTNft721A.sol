@@ -126,7 +126,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function whitelistBuyToken(uint256 quantity) internal {
-        require(saleStatus == SaleStatus.Whitelist, "Whitelist sale not live");
         require(whitelist[_msgSender()], "You are not whitelisted");
         require(
             maxWhitelistWalletMints[_msgSender()] + quantity <= whitelists.whitelistLimit,
@@ -150,7 +149,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function allowlistBuyToken(uint256 quantity) internal {
-        require(saleStatus == SaleStatus.Allowlist, "Allowlist sale not live");
         require(allowlist[_msgSender()], "You are not allowlisted");
         require(
             maxAllowlistWalletMints[_msgSender()] + quantity <= allowlists.allowlistLimit,
@@ -174,7 +172,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function publicBuyToken(uint256 quantity) internal {
-        require(saleStatus == SaleStatus.Public, "Public sale not live");
         require(totalMinted() + quantity <= publicSales.maxPublicSaleSupply, "Maximum supply reached");
         require(
             maxPublicWalletMints[_msgSender()] + quantity <= publicSales.publicWalletLimit,
@@ -325,11 +322,6 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         uint256 shiftedTokenId = (_tokenId + tokenOffset) % totalSupply();
         return string(abi.encodePacked(postRevealURI, shiftedTokenId.toString()));
     }
-
-    // Sale State Function
-    // function setSaleStatus(SaleStatus _status) external onlyOwner {
-    //     saleStatus = _status;
-    // }
 
     // Sale State Function
     function setPreRevealURI(string memory _newPreRevealURI) external onlyOwner {
