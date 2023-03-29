@@ -12,6 +12,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     VRFCoordinatorV2Interface public coordinator;
     using StringsUpgradeable for uint256;
     uint256 public tokenPrice;
+    uint256 public walletLimit;
 
     enum SaleStatus {
       Paused,
@@ -66,14 +67,17 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
 
     // Set about the Whitelist Person
     mapping(address => bool) private whitelist;
-    mapping(address => uint) public maxWhitelistWalletMints;
+    mapping(address => uint) public whitelistWalletMints;
 
     // Set about the Allowlist Person
     mapping(address => bool) private allowlist;
-    mapping(address => uint) public maxAllowlistWalletMints;
+    mapping(address => uint) public allowlistWalletMints;
 
     // set about the public person
-    mapping(address => uint) public maxPublicWalletMints;
+    mapping(address => uint) public publicWalletMints;
+
+    // set about the wallet mint
+    mapping(address => uint)  public walletMints;
 
     event TokensSold(address market, uint256[] tokenIds, uint256 price, address buyer);
     event RevealStarted(address market, string newUri);
@@ -92,6 +96,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         string memory _contractUri,
         string memory _preRevealURI,
         uint256 _maxSupply,
+        uint256 _walletLimit,
         address _feeAddress,
         uint64 _sSubscriptionId,
         address _vrfCoordinator,
@@ -100,6 +105,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         contractUri = _contractUri;
         preRevealURI = _preRevealURI;
         maxSupply = _maxSupply;
+        walletLimit = _walletLimit;
         feeAddress = _feeAddress;
         sKeyHash = _sKeyHash;
         callbackGasLimit = 100000;
@@ -128,8 +134,11 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     function whitelistBuyToken(uint256 quantity) internal {
         require(whitelist[_msgSender()], "You are not whitelisted");
         require(
-            maxWhitelistWalletMints[_msgSender()] + quantity <= whitelists.whitelistLimit,
-            "Maximum NFT's per wallet reached"
+            whitelistWalletMints[_msgSender()] + quantity <= whitelists.whitelistLimit,
+            "Maximum whitelist mint NFT's per wallet reached"
+        );
+        require(
+            walletMints[_msgSender()] + quantity <= walletLimit, "Maximum NFT's per wallet reached"
         );
         require(
             whitelists.whitelistTokenSold + quantity <= whitelists.maxWhiteListSupply,
@@ -141,7 +150,8 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         for (uint256 i = 0; i < quantity; i++) {
             tokenIds[i] = totalMinted() + i;
         }
-        maxWhitelistWalletMints[_msgSender()] += quantity;
+        whitelistWalletMints[_msgSender()] += quantity;
+        walletMints[_msgSender()] += quantity;
         whitelists.whitelistTokenSold += quantity;
         payable(feeAddress).transfer(txAmount);
         _safeMint(_msgSender(), quantity);
@@ -151,8 +161,11 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     function allowlistBuyToken(uint256 quantity) internal {
         require(allowlist[_msgSender()], "You are not allowlisted");
         require(
-            maxAllowlistWalletMints[_msgSender()] + quantity <= allowlists.allowlistLimit,
-            "Maximum NFT's per wallet reached"
+            allowlistWalletMints[_msgSender()] + quantity <= allowlists.allowlistLimit,
+            "Maximum allowlist mint NFT's per wallet reached"
+        );
+        require(
+            walletMints[_msgSender()] + quantity <= walletLimit, "Maximum NFT's per wallet reached"
         );
         require(
             allowlists.allowlistTokenSold + quantity <= allowlists.maxAllowListSupply,
@@ -164,8 +177,9 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         for (uint256 i = 0; i < quantity; i++) {
             tokenIds[i] = totalMinted() + i;
         }
-        maxAllowlistWalletMints[_msgSender()] += quantity;
+        allowlistWalletMints[_msgSender()] += quantity;
         allowlists.allowlistTokenSold += quantity;
+        walletMints[_msgSender()] += quantity;
         payable(feeAddress).transfer(txAmount);
         _safeMint(_msgSender(), quantity);
         emit TokensSold(address(this), tokenIds, tokenPrice, _msgSender());
@@ -174,8 +188,11 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     function publicBuyToken(uint256 quantity) internal {
         require(totalMinted() + quantity <= publicSales.maxPublicSaleSupply, "Maximum supply reached");
         require(
-            maxPublicWalletMints[_msgSender()] + quantity <= publicSales.publicWalletLimit,
-            "Maximum NFT's per wallet reached"
+            publicWalletMints[_msgSender()] + quantity <= publicSales.publicWalletLimit,
+            "Maximum public mint NFT's per wallet reached"
+        );
+        require(
+            walletMints[_msgSender()] + quantity <= walletLimit, "Maximum NFT's per wallet reached"
         );
         uint256 txAmount = tokenPrice * quantity;
         require(msg.value == txAmount, "Not enough eth sent");
@@ -183,8 +200,9 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
         for (uint256 i = 0; i < quantity; i++) {
             tokenIds[i] = totalMinted() + i;
         }
-        maxPublicWalletMints[_msgSender()] += quantity;
+        publicWalletMints[_msgSender()] += quantity;
         publicSales.publicTokenSold += quantity;
+        walletMints[_msgSender()] += quantity;
         payable(feeAddress).transfer(txAmount);
         _safeMint(_msgSender(), quantity);
         emit TokensSold(address(this), tokenIds, tokenPrice, _msgSender());
@@ -226,7 +244,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function findBalancedWhitelistMint(address user) external view returns (uint) {
-        return (whitelists.whitelistLimit - maxWhitelistWalletMints[user]);
+        return (whitelists.whitelistLimit - whitelistWalletMints[user]);
     }
 
     /**********    For allowlist      *********/
@@ -265,7 +283,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function findBalancedAllowlistMint(address user) external view returns (uint) {
-        return (allowlists.allowlistLimit - maxAllowlistWalletMints[user]);
+        return (allowlists.allowlistLimit - allowlistWalletMints[user]);
     }
 
     /*********** For public ********/
@@ -282,7 +300,7 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     }
 
     function findBalancedPublicMint(address user) external view returns (uint) {
-        return (publicSales.publicWalletLimit - maxPublicWalletMints[user]);
+        return (publicSales.publicWalletLimit - publicWalletMints[user]);
     }
 
     // Request Token Offset
@@ -326,5 +344,9 @@ contract WowTNft721A is NFT721A, VRFConsumerBaseV2Upgradeable {
     // Sale State Function
     function setPreRevealURI(string memory _newPreRevealURI) external onlyOwner {
         preRevealURI = _newPreRevealURI;
+    }
+
+    function findBalancedWalletMint(address user) external view returns (uint) {
+        return (walletLimit - walletMints[user]);
     }
 }

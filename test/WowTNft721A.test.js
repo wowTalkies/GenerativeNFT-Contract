@@ -8,6 +8,7 @@ describe('WowTNft721A', function () {
   const name = 'wowT721';
   const symbol = 'wowT';
   const maxSupply = 10;
+  const walletLimit = 8;
   const feeAddress = '0x26BA546b581f859BFeE6821958097E8bA1C24444';
   const contractURI =
     'https://wowtalkiesdevbucket.s3.ap-south-1.amazonaws.com/collections/wowtalkiesgenesis/chainlink.json';
@@ -37,6 +38,7 @@ describe('WowTNft721A', function () {
       contractURI,
       preRevealUri,
       maxSupply,
+      walletLimit,
       feeAddress,
       subscriptionId,
       vrfCoordinator,
@@ -238,7 +240,7 @@ describe('WowTNft721A', function () {
           })
         ).to.be.revertedWith('You are not whitelisted');
       });
-      it('should not whitelist buyToken if amount is greater than wallet max supply', async () => {
+      it('should not whitelist buyToken if amount is greater than whitelist mint token per wallet', async () => {
         await contract.setWhitelistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           3,
@@ -250,23 +252,23 @@ describe('WowTNft721A', function () {
             from: otherUser.address,
             value: hre.ethers.utils.parseEther('60.0'),
           })
-        ).to.be.revertedWith("Maximum NFT's per wallet reached");
+        ).to.be.revertedWith("Maximum whitelist mint NFT's per wallet reached");
       });
-      it('should not whitelist buyToken if amount is greater than public max supply', async () => {
+      it('should not whitelist buyToken if amount is greater than whitelist max supply', async () => {
         await contract.setWhitelistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           10,
           50000000000000,
-          8
+          7
         );
         await expect(
-          contract.connect(otherUser).buyToken(10, {
+          contract.connect(otherUser).buyToken(8, {
             from: otherUser.address,
-            value: hre.ethers.utils.parseEther('160.0'),
+            value: hre.ethers.utils.parseEther('40.0'),
           })
         ).to.be.revertedWith('Maximum whitelist supply reached');
       });
-      it('should not whitelist buyToken if value is below the minimum public tokenPrice', async function () {
+      it('should not whitelist buyToken if value is below the minimum whitelist tokenPrice', async function () {
         await contract.setWhitelistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           3,
@@ -320,7 +322,7 @@ describe('WowTNft721A', function () {
           })
         ).to.be.revertedWith('You are not allowlisted');
       });
-      it('should not allowlist buyToken if amount is greater than wallet max supply', async () => {
+      it('should not allowlist buyToken if amount is greater than allowlist mint token per wallet', async () => {
         await contract.setAllowlistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           3,
@@ -332,23 +334,23 @@ describe('WowTNft721A', function () {
             from: otherUser.address,
             value: hre.ethers.utils.parseEther('60.0'),
           })
-        ).to.be.revertedWith("Maximum NFT's per wallet reached");
+        ).to.be.revertedWith("Maximum allowlist mint NFT's per wallet reached");
       });
-      it('should not allowlist buyToken if amount is greater than public max supply', async () => {
+      it('should not allowlist buyToken if amount is greater than allowlist max supply', async () => {
         await contract.setAllowlistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           10,
           50000000000000,
-          8
+          7
         );
         await expect(
-          contract.connect(otherUser).buyToken(10, {
+          contract.connect(otherUser).buyToken(8, {
             from: otherUser.address,
             value: hre.ethers.utils.parseEther('160.0'),
           })
         ).to.be.revertedWith('Maximum allowlist supply reached');
       });
-      it('should not allowlist buyToken if value is below the minimum public tokenPrice', async function () {
+      it('should not allowlist buyToken if value is below the minimum allowlist tokenPrice', async function () {
         await contract.setAllowlistAddress(
           ['0x70997970C51812dc3A010C7d01b50e0d17dc79C8'],
           3,
@@ -383,14 +385,14 @@ describe('WowTNft721A', function () {
           })
         ).to.be.revertedWith('token is paused');
       });
-      it('should not public buyToken if amount is greater than wallet max supply', async () => {
+      it('should not public buyToken if amount is greater than public mint token per wallet', async () => {
         await contract.setPublicSale('1000000000000000000', 4);
         await expect(
           contract.connect(otherUser).buyToken(6, {
             from: otherUser.address,
             value: hre.ethers.utils.parseEther('60.0'),
           })
-        ).to.be.revertedWith("Maximum NFT's per wallet reached");
+        ).to.be.revertedWith("Maximum public mint NFT's per wallet reached");
       });
       it('should not public buyToken if amount is greater than public max supply', async () => {
         await contract.setPublicSale('1000000000000000000', 10);
